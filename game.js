@@ -116,7 +116,7 @@ snake.shift()
   drawSnake()
   drawCircle(7, 3)
 
-  setTimeout(() => loop(), 50)
+  setTimeout(() => loop(), 100)
 }
 
 loop()
