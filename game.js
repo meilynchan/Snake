@@ -58,23 +58,18 @@ window.addEventListener('keydown', event => {
   console.log(event.code)
 
 if(event.code === 'ArrowDown'){
-
   direction = 'down'
 }
 
 if(event.code === 'ArrowUp'){
-
   direction = 'up'
 }
 
-
 if(event.code === 'ArrowRight'){
-
   direction = 'right'
 }
 
 if(event.code === 'ArrowLeft'){
-
   direction = 'left'
 }
 
