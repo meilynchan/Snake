@@ -158,8 +158,6 @@ if(direction === 'up'){
   }
 
 
-
-
   erase()
   drawSnake()
   drawCircle(apple.x, apple.y)
