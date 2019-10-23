@@ -19,8 +19,31 @@ let snake = [
 
 let direction = 'right'
 
+let apple = {x: 7, y: 3}
+
+function resetSnake(){
+  snake = [ 
+    {x: 3, y: 1},
+    {x: 3, y: 2}, 
+    {x: 3, y: 3}, 
+    {x: 4, y: 3}, 
+    {x: 5, y: 3},
 
 
+]
+
+direction = 'right'
+
+
+}
+
+function randomApple(){
+  apple = {
+    x: Math.floor(Math.random() * gridWidth),
+    y: Math.floor(Math.random() * gridHeight),
+  }
+
+}
 
 // draw helpers
 function erase() {
@@ -47,9 +70,8 @@ function drawSnake() {
     let point = snake[i]
     drawSquare(point.x, point.y)
   }
-      let head = snake[snake.length - 1]
-
-      drawHead(head.x, head.y)
+  let head = snake[snake.length - 1]
+  drawHead(head.x, head.y)
 }
 
 
@@ -104,12 +126,43 @@ if(direction === 'up'){
   snake.push(newHead)
   }
 
-snake.shift()
+  head = snake[snake.length - 1]
+  if(head.x === apple.x && head.y === apple.y){
+    console.log('ate the apple')
+    
+    randomApple()
+
+  } else{
+
+    snake.shift()
+
+  }
+
+
+  if(head.x >= gridWidth || head.y >= gridHeight || head.y < 0 || head.x < 0){
+
+    resetSnake()
+
+  }
+
+
+ 
+  for(let i = 0; i < snake.length - 1; i++){
+    let point = snake[i]
+
+    if(head.x === point.x && head.y === point.y){
+
+      resetSnake()
+    }
+
+  }
+
+
 
 
   erase()
   drawSnake()
-  drawCircle(7, 3)
+  drawCircle(apple.x, apple.y)
 
   setTimeout(() => loop(), 100)
 }
